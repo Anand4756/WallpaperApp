@@ -21,7 +21,7 @@ class _wallpaperState extends State<wallpaper> {
   }
   fetchapi() async {
     await http.get(Uri.parse('https://api.pexels.com/v1/curated?per_page=80'),
-        headers:{'Authorization':'API KEY'}).then((value) {
+        headers:{'Authorization':'563492ad6f917000010000015c22dc810c284c838c86b2c519f60ac9'}).then((value) {
       Map result = jsonDecode(value.body);
       setState(() {
         images = result['photos'];
@@ -38,7 +38,7 @@ class _wallpaperState extends State<wallpaper> {
         page.toString();
     await http.get(Uri.parse(url),
         headers: {
-          'Authorization': 'API KEY'
+          'Authorization': '563492ad6f917000010000015c22dc810c284c838c86b2c519f60ac9'
         }).then((value) {
       Map result = jsonDecode(value.body);
       setState(() {
@@ -50,12 +50,13 @@ class _wallpaperState extends State<wallpaper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: Column(
         children: [
           Expanded(child: Container(
             child: GridView.builder(
               itemCount: images.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisSpacing: 2, crossAxisCount: 3, childAspectRatio: 2/3,mainAxisSpacing: 2),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisSpacing: 15, crossAxisCount: 3, childAspectRatio: 2/3,mainAxisSpacing: 15),
               itemBuilder: (context,index){
               return InkWell(
                 onTap: (){
@@ -75,10 +76,11 @@ class _wallpaperState extends State<wallpaper> {
             },
             child: Container(
                 height: 50,
-                width: double.infinity,
-                color: Colors.pink,
+                 width: double.infinity,
+                color: Colors.green,
                 child: Center(child: Text("Load More", style: TextStyle(fontSize: 20, color: Colors.white),))),
           )
+
         ]
       )
     );
